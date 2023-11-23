@@ -1,0 +1,54 @@
+﻿<!-- This view is specifically designed to confirm the deletion of a Restaurant entity -->
+
+@model OdeToFood.Data.Models.Restaurant
+<!-- This view expects a model of type Restaurant from the OdeToFood.Data.Models namespace -->
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div>
+    <h4>Restaurant</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+            <!-- This helper method displays the display name (or label) for the Name property -->
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+            <!-- This displays the value of the Name property of the Restaurant model -->
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        <!-- This creates a form that, when submitted, will send a POST request to the server -->
+        <!-- This is the standard approach to handling deletions in ASP.NET MVC, as it ensures the delete action only occurs following a POST request, which is safer than a GET request -->
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            <!-- This represents the Delete button
+                 When clicked, it submits the form, indicating that the user confirms the deletion. -->
+
+            @Html.ActionLink("Back to List", "Index")
+            <!-- Easy way to cancel the delete action and return to the list of restaurants -->
+        </div>
+    }
+</div>
+
+<!--
+    The corresponding controller would typically have two actions for this view:
+
+    GET Action: To display the delete confirmation page with the details of the specific restaurant.
+    POST Action: To handle the form submission and perform the deletion of the restaurant.
+-->

@@ -1,0 +1,28 @@
+﻿<!-- This represents a partial view -->
+<!-- Partial views are used to encapsulate a piece of a user interface that you expect to reuse in multiple places across an application -->
+<!-- They help keep the views DRY (“Don’t Repeat Yourself”) -->
+<!-- It’s a common practice to prefix partial view file names with an underscore (e.g., _RestaurantPanel.cshtml) to distinguish them from regular views -->
+
+@model OdeToFood.Data.Models.Restaurant
+<!-- This view expects a model of type Restaurant from the OdeToFood.Data.Models namespace -->
+
+<div class="panel panel-default">
+    <!-- This is a Bootstrap panel component
+         Panels are used to put content in a box with some styling and are useful for organizing information neatly -->
+    
+    <div class="panel-heading">
+        <!-- This div represents the heading section of the panel -->
+        <h3 class="panel-title">
+        @Model.Name
+        </h3>
+    </div>
+    
+    <div class="panel-body">
+        <!-- This div encapsulates the body of the panel -->
+        <!-- The body contains three links created using @@Html.ActionLink helper methods -->
+        <!-- They create a link to the Edit, Details or Delete action methods of the current controller, passing the Id of the restaurant as a route parameter -->
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+        @Html.ActionLink("Details", "Details", new { id = Model.Id })
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+    </div>
+</div>

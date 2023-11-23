@@ -1,0 +1,39 @@
+﻿<!-- This view is designed to display detailed information about a restaurant -->
+
+@model OdeToFood.Data.Models.Restaurant
+<!-- This view expects a model of type Restaurant from the OdeToFood.Data.Models namespace -->
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details for @Model.Name</h2>
+
+<div>
+    <h4>Restaurant</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuisine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuisine)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    <!-- Creates a link to the "Edit" page for the current restaurant
+         It uses the Id of the restaurant to generate the correct URL -->
+
+    @Html.ActionLink("Back to List", "Index")
+    <!-- Provides a link back to the list of restaurants (presumably the index view of the Restaurants controller) -->
+</p>

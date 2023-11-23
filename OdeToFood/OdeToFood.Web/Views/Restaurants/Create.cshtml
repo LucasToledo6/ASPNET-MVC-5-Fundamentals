@@ -1,0 +1,88 @@
+﻿<!-- This is a view for creating a new Restaurant -->
+
+@model OdeToFood.Data.Models.Restaurant
+<!-- This view expects a model of type Restaurant from the OdeToFood.Data.Models namespace -->
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    <!-- This line starts the HTML form
+         Html.BeginForm() is a helper method that generates the HTML <form> tag. By default, it posts back to the same URL -->
+
+    @Html.AntiForgeryToken()
+    <!-- Security measure to prevent cross-site request forgery attacks -->
+
+    <div class="form-horizontal">
+        <!-- The form is styled as a horizontal form using Bootstrap classes -->
+
+        <h4>Restaurant</h4>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!-- This displays a summary of all validation errors -->
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <!-- These helpers are used to generate the label and input field for the Name property of the Restaurant model -->
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                <!-- The EditorFor helper respects data annotations applied to the model properties for validation -->
+                <!-- It's an HTML helper that generates an HTML input element based on the model property it's bound to -->
+
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                <!-- Displays validation messages for the Name property -->
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.Cuisine, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.Cuisine, new { htmlAttributes = new { @class = "form-control" } })
+                <!-- This helper generates a dropdown list for the Cuisine property, which is an enum
+                     The dropdown list will contain all enum values -->
+
+                @Html.ValidationMessageFor(model => model.Cuisine, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- The form includes a submit button. When clicked, the form data is submitted to the server. -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+                <!-- <input type="submit" ... /> is an HTML input element specifically designed to submit forms. 
+                     When this button is clicked, it triggers the submission of the form it's contained within -->
+            </div>
+        </div>
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+    <!-- Provides a link back to the index page (presumably listing all restaurants -->
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<!-- 
+     This includes the jQuery validation scripts for client-side validation,
+     enhancing user experience by providing immediate feedback on input fields 
+-->
+
+<!-- 
+    The corresponding controller will have two actions for this view:
+
+    GET Action: To display the form
+    POST Action: To handle form submission, validate the model, and save the new restaurant data
+-->

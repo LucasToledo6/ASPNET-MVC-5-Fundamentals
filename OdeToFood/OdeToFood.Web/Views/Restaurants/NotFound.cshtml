@@ -1,0 +1,12 @@
+﻿<!-- This view is simple and straightforward -->
+<!-- This page is shown when a requested resource, such as a specific restaurant in our application, does not exist or cannot be found -->
+<!-- It's simple but it's a good practice to have such user-friendly error handling in web applications to enhance the overall user experience -->
+@{
+    ViewBag.Title = "NotFound";
+}
+
+<h2>Sorry!</h2>
+
+<div>That restaurant was not found!</div>
+
+@Html.ActionLink("Back to List", "Index")

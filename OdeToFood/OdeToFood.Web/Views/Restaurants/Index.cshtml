@@ -1,0 +1,55 @@
+﻿<!-- This view is designed to display a list of restaurants -->
+
+@model IEnumerable<OdeToFood.Data.Models.Restaurant>
+<!-- This view expects an enumerable collection of Restaurant objects from the OdeToFood.Data.Models namespace -->
+
+@{
+    ViewBag.Title = "Index";
+    // ViewBag.Message = "Hello!";
+    // Layout = null;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_RestaurantSummary", item)
+}
+
+<!--
+     Within the loop, @@Html.Partial("_RestaurantSummary", item) is used to render a partial view for each restaurant
+     The _RestaurantSummary partial view is passed an individual Restaurant object (item) and is responsible for rendering the summary of each restaurant
+-->
+
+<!-- Here we build the Index page without the partial view -->
+
+@*@<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table> *@
+
+@* @section footer{
+    <div>This is a custom footer</div>
+    } *@

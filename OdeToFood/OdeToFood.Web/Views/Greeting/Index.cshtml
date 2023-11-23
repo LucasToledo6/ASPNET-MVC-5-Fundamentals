@@ -1,0 +1,19 @@
+﻿<!-- This is a Razor View -->
+<!-- This view is utilizing the GreetingViewModel to display a message and a name -->
+<!-- The '@@' symbol is used to indicate an expression that should be evaluated as C# code, not plain text -->
+
+@model OdeToFood.Web.Models.GreetingViewModel
+<!-- This directive declares the type of the model that this view expects to receive -->
+
+@{
+    ViewBag.Title = "Index";
+    // Here, ViewBag is used to dynamically add a property named Title with the value "Index"
+    // ViewBag is a dynamic object provided by ASP.NET MVC that allows you to pass data from your controller to your view
+    // This Title property is often used to set the page title in the layout view (_Layout.cshtml)
+}
+
+<h2>Index</h2> 
+<!-- This is an HTML heading tag that displays the text "Index" on the page -->
+
+@Model.Message, @Model.Name! 
+<!-- This line will render the contents of Message and Name from the model instance passed to this view by the controller -->

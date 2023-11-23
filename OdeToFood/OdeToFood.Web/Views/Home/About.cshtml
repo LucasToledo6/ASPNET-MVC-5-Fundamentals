@@ -1,0 +1,28 @@
+﻿<!-- This view is utilizing ViewBag to dynamically set and display the title and message -->
+<!-- This view does not receive any model -->
+
+@{
+    ViewBag.Title = "About";
+    // This line sets the Title property of ViewBag to "About"
+}
+
+<main aria-labelledby="title">
+    <!-- The <main> tag is used to define the main content of the web page -->
+    <!-- The aria-labelledby attribute is used for accessibility purposes,
+         indicating that the main content area is labelled by an element with the ID title.-->
+
+    <h2 id="title">
+        <!-- This is an HTML heading tag that displays the content of ViewBag.Title-->
+        <!-- The id="title" attribute is linked to the aria-labelledby attribute in the <main> tag for accessibility -->
+        @ViewBag.Title
+    </h2>
+
+    <h3>@ViewBag.Message</h3>
+    <!-- This heading tag is used to display a message -->
+    <!-- The content of the message is expected to be set in the ViewBag.Message property by the controller -->
+
+    <p>Use this area to provide additional information.</p>
+    <!-- This paragraph is static content in the view, 
+         providing a placeholder or instruction for where additional information about the page can be added -->
+
+</main>

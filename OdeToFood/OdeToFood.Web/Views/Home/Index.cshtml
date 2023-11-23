@@ -1,0 +1,20 @@
+﻿<!-- This view is specifically designed to display information about restaurants -->
+
+@model IEnumerable<OdeToFood.Data.Models.Restaurant>
+<!-- The view is set up to use an enumerable collection of Restaurant objects from the OdeToFood.Data.Models namespace -->
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <!-- This is an HTML div element with a class of "jumbotron"
+         The jumbotron is typically used in Bootstrap (a front-end framework) to highlight key information, often featuring a large size and significant padding -->
+
+    <h1>ASP.NET</h1>
+    <div>
+        There are @Model.Count() number of restaurants in the db.
+        <!-- @@Model refers to the model passed to the view (in this case, the enumerable collection of Restaurant objects), 
+             and Count() is a LINQ method that counts the number of items in the collection -->
+    </div>
+</div>

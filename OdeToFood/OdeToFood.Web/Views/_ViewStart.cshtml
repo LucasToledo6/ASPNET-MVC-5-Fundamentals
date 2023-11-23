@@ -1,0 +1,12 @@
+﻿<!-- This Razor code is used to specify the layout that a particular view should use -->
+<!-- Layouts are a way to define a common site template (or master page) that can be used across multiple views -->
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- This Razor code sets the default layout for all views to _Layout.cshtml, which is located in the ~/Views/Shared directory. -->
+<!-- When a view containing this code is rendered, ASP.NET MVC checks the _ViewStart.cshtml file first 
+     It applies the settings found there, which in this case means using _Layout.cshtml as the layout for the view
+     The content of the view will be rendered where the layout file calls @@RenderBody() -->
